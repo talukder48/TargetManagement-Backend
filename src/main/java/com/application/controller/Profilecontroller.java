@@ -44,7 +44,6 @@ public class Profilecontroller {
 	public TargetMaster UpdateTarget(@PathVariable String targetode, @RequestBody TargetMaster targetmaster) {
 
 		if (targetservice.existsById(targetode)) {
-
 			TargetMaster master = targetservice.findById(targetode).orElseThrow();
 			master.setStart_date(targetmaster.getStart_date());
 			master.setActive_flag(targetmaster.getActive_flag());
