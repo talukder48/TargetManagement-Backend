@@ -1,4 +1,5 @@
 package com.application.controller;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,28 +19,28 @@ import org.springframework.web.bind.annotation.RestController;
 import com.application.model.TargetMaster;
 import com.application.repository.ITargetrepository;
 
-@CrossOrigin(origins="http://192.168.100.221:3000")
+@CrossOrigin(origins = "http://192.168.100.221:3000")
 @RestController
 public class Profilecontroller {
 	@Autowired
-    private ITargetrepository targetservice;
+	private ITargetrepository targetservice;
 
 	@GetMapping("/api/target/data")
-	    public List<TargetMaster> Fetch(Model model) {
-		 System.out.println("TargetMaster");			
-		    return targetservice.findAll();				  
-	    }	
-	
+	public List<TargetMaster> Fetch(Model model) {
+		System.out.println("TargetMaster");
+		return targetservice.findAll();
+	}
+
 	@PostMapping("/api/target/save")
-    public TargetMaster Save(@RequestBody TargetMaster targetmaster) {		 
-	    return targetservice.save(targetmaster);				  
-    }	
-	
+	public TargetMaster Save(@RequestBody TargetMaster targetmaster) {
+		return targetservice.save(targetmaster);
+	}
+
 	@GetMapping("/api/GetSingle/{targetode}")
 	public Optional<TargetMaster> getTargetByCode(@PathVariable String targetode) {
 		return targetservice.findById(targetode);
 	}
-	
+
 	@PutMapping("/api/Update/{targetode}")
 	public TargetMaster UpdateTarget(@PathVariable String targetode, @RequestBody TargetMaster targetmaster) {
 
@@ -57,15 +58,15 @@ public class Profilecontroller {
 		}
 
 	}
+
 	@DeleteMapping("api/Delete/{targetode}")
-	public Map<String ,Boolean>DeleteByTarget(@PathVariable String targetode){
+	public Map<String, Boolean> DeleteByTarget(@PathVariable String targetode) {
 		System.out.println(targetode);
 		TargetMaster master = targetservice.findById(targetode).orElseThrow();
 		targetservice.delete(master);
-		Map<String,Boolean> ResponseEntity =new HashMap<>();
+		Map<String, Boolean> ResponseEntity = new HashMap<>();
 		ResponseEntity.put("deleted", Boolean.TRUE);
 		return ResponseEntity;
 	}
-		
-	
+
 }
