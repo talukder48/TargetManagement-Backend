@@ -30,7 +30,7 @@ public class Profilecontroller {
 		System.out.println("TargetMaster");
 		return targetservice.findAll();
 	}
-
+	
 	@PostMapping("/api/target/save")
 	public TargetMaster Save(@RequestBody TargetMaster targetmaster) {
 		return targetservice.save(targetmaster);
