@@ -122,11 +122,6 @@ public class User {
 		ModOn = modOn;
 	}
 
-	@Override
-	public String toString() {
-		return "User [UserId=" + UserId + ", UserName=" + UserName + ", Password=" + Password + ", UserBranch="
-				+ UserBranch + ", UserRole=" + UserRole + ", CheckRole=" + CheckRole + ", AuthRole=" + AuthRole
-				+ ", EntyBy=" + EntyBy + ", EntyOn=" + EntyOn + ", ModBy=" + ModBy + ", ModOn=" + ModOn + "]";
-	}
+	
 
 }

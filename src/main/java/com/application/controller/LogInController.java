@@ -1,6 +1,7 @@
 package com.application.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,18 +18,19 @@ public class LogInController {
 	@Autowired
 	private IUserRepository UserService;
 	@PostMapping("/api/LogIn/{UserId}/{Password}")
-	public List<User> GetLogInAccess(@PathVariable String UserId,@PathVariable String Password) {
+	public String GetLogInAccess(@PathVariable String UserId,@PathVariable String Password) {
+		String DataMap=null;
 		if (UserService.existsById(UserId)) {
 			User usermaster = UserService.findById(UserId).orElseThrow();
 			String userPassword =usermaster.getPassword().toString();
-			System.out.println(userPassword);
+			DataMap=UserService.findById(UserId).toString();
+			System.out.println(DataMap);
+			
 		} else {
 			System.out.println("User Id not Found");
 		}
-		
-		
-		System.out.println(UserId);
-		return UserService.findAll();
+				
+		return UserService.findById(UserId).toString();
 	}
 
 }
