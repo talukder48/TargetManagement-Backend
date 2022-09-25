@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +22,7 @@ import com.application.repository.ITargetrepository;
 
 @CrossOrigin(origins = "http://192.168.100.221:3000")
 @RestController
+@EnableJpaRepositories
 public class Profilecontroller {
 	@Autowired
 	private ITargetrepository targetservice;
